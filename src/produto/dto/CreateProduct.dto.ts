@@ -8,12 +8,16 @@ import {
   ValidateNested,
   ArrayMinSize,
   IsString,
+  IsUUID,
 } from 'class-validator';
 import { ProductCharacteristcDTO } from './ProductCharacteristc.dto';
 import { Type } from 'class-transformer';
 import { ProductImageDTO } from './ProductImage.dto';
 
 export class CreateProductDTO {
+  @IsUUID(undefined, { message: 'Invalid User ID!' })
+  userId: string;
+
   @IsString()
   @IsNotEmpty()
   name: string;
